@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Image } from 'react-native';
+import { Alert, Image, TouchableOpacity } from 'react-native';
+
 import { H6 } from '../../GlobalStyles/Typography';
 
 import { Container, LogoTextPosition } from './styles';
@@ -10,7 +11,13 @@ const AppHeader: React.FC<IAppHeader> = (props) => {
   const { user } = props;
   return (
     <Container>
-      <Image source={require('../../assets/icons/logoutIcon.png')} />
+      <TouchableOpacity
+        onPress={() => {
+          Alert.alert('Tirando do AsyncStorage o @TokenLogin!');
+        }}
+      >
+        <Image source={require('../../assets/icons/logoutIcon.png')} />
+      </TouchableOpacity>
       <LogoTextPosition small>Meeting</LogoTextPosition>
       <H6>
         Usuário:

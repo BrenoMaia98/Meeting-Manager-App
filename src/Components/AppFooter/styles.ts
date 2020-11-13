@@ -9,13 +9,9 @@ export const Container = styled.View`
   color: ${ColorPalette.primaryText};
   flex-direction: row;
   justify-content: space-between;
-  align-items: baseline;
-  padding: 16px 8px;
-  height: 90px;
+  align-items: center;
+  padding: 16px 24px;
+  height: 80px;
   position: absolute;
-  top: 0px;
-`;
-
-export const LogoTextPosition = styled(LogoText)`
-  padding-bottom: 16px;
+  bottom: 0px;
 `;
