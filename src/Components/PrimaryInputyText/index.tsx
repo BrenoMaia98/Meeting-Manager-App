@@ -1,12 +1,7 @@
 import React from 'react';
 
 import { InputContainer, StyledTextInput } from './styles';
-
-type IPrimaryInputText = {
-  onChange(text: string): void;
-  placeholder?: string;
-  width?: number;
-};
+import { IPrimaryInputText } from './types';
 
 const PrimaryInputText: React.FC<IPrimaryInputText> = (props) => {
   const { onChange, placeholder, width } = props;
