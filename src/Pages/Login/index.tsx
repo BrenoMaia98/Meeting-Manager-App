@@ -18,8 +18,8 @@ const Login: React.FC<LoginProps> = ({ navigation }) => {
       resizeMode="cover"
     >
       <LogoText>Meeting</LogoText>
-      <InputWithLabel label="Usuário" onChange={onChangeUser} />
-      <InputWithLabel label="Senha" onChange={onChangePassword} />
+      <InputWithLabel label="Usuário:" onChange={onChangeUser} />
+      <InputWithLabel label="Senha:" onChange={onChangePassword} />
       <LoginButton onPress={() => navigation.navigate('MainScreen')}>
         <H5 white> Entrar</H5>
       </LoginButton>

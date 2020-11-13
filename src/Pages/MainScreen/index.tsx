@@ -1,25 +1,19 @@
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { StackProps } from '../../../routes/StackNavigation';
+import { TouchableOpacity } from 'react-native';
+import { H5 } from '../../GlobalStyles/Typography';
+import { MainScreenProps } from './types';
+import { Container } from './styles';
+import AppHeader from '../../Components/AppHeader';
 
-type MainScreenScreenNavigationProp = StackNavigationProp<
-  StackProps,
-  'MainScreen'
->;
-
-interface Props {
-  navigation: MainScreenScreenNavigationProp;
-}
-
-const Login: React.FC<Props> = ({ navigation }) => {
+const MainScreen: React.FC<MainScreenProps> = ({ navigation }) => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <Container>
+      <AppHeader user="Breno" />
       <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-        <Text> Click me!</Text>
+        <H5 underline>Voltar</H5>
       </TouchableOpacity>
-    </View>
+    </Container>
   );
 };
 
-export default Login;
+export default MainScreen;

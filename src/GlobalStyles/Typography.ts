@@ -61,9 +61,7 @@ export const Paragraph = styled.Text<FontProps>`
   ${({ underline }) => underline && `text-decoration:underline`}
 `;
 
-export const LogoText = styled.Text<FontProps>`
+export const LogoText = styled.Text<{ small?: boolean }>`
   /* font-family: 'Roboto-Medium', sans-serif; */
-  font-size: 48px;
-  ${({ white }) => white && `color:${ColorPalette.white}`}
-  ${({ underline }) => underline && `text-decoration:underline`}
+  font-size: ${({ small }) => (small && 28) || 48}px;
 `;
