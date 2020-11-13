@@ -1,33 +1,32 @@
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { StackProps } from '../../../routes/StackNavigation';
 import { H5, LogoText } from '../../GlobalStyles/Typography';
-import PrimaryInputText from '../../Components/PrimaryInputyText';
+import { ImageBackground, LoginButton } from './styles';
+import InputWithLabel from '../../Components/InputWithLabel';
+import { LoginProps } from './types';
 
-type LoginScreenNavigationProp = StackNavigationProp<StackProps, 'Login'>;
+const Login: React.FC<LoginProps> = ({ navigation }) => {
+  const onChangeUser = (text: string) => {
+    console.log(text);
+  };
+  const onChangePassword = (text: string) => {
+    console.log(text);
+  };
 
-interface Props {
-  navigation: LoginScreenNavigationProp;
-}
-const Login: React.FC<Props> = ({ navigation }) => {
   return (
-    <View
-      style={{
-        height: '100%',
-        width: '100%',
-        backgroundColor: '#6f6f46',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
+    <ImageBackground
+      source={require('../../assets/images/loginBG.png')}
+      resizeMode="cover"
     >
       <LogoText>Meeting</LogoText>
-      <TouchableOpacity onPress={() => navigation.navigate('MainScreen')}>
-        <PrimaryInputText onChange={(text) => console.log(text)} />
-
-        <H5> Click me!</H5>
-      </TouchableOpacity>
-    </View>
+      <InputWithLabel label="Usuário" onChange={onChangeUser} />
+      <InputWithLabel label="Senha" onChange={onChangePassword} />
+      <LoginButton onPress={() => navigation.navigate('MainScreen')}>
+        <H5 white> Entrar</H5>
+      </LoginButton>
+      <H5 white underline>
+        Cadastrar conta!
+      </H5>
+    </ImageBackground>
   );
 };
 
