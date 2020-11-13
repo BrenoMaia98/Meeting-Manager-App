@@ -1,7 +1,6 @@
 import styled from 'styled-components/native';
 import { ColorPalette } from '../../GlobalStyles/ColorPalette';
 import { deviceSpecs } from '../../GlobalStyles/Device';
-import { LogoText } from '../../GlobalStyles/Typography';
 
 export const Container = styled.View`
   width: ${deviceSpecs.width}px;

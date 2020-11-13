@@ -13,7 +13,7 @@ export default function App(): JSX.Element {
     return Font.loadAsync({
       'Roboto-Regular': require('./src/assets/fonts/Roboto/Roboto-Regular.ttf'),
       'Roboto-Medium': require('./src/assets/fonts/Roboto/Roboto-Medium.ttf'),
-      Vampiro_One: require('./src/assets/fonts/Vampiro_One/VampiroOne-Regular.ttf'),
+      'Vampiro-One': require('./src/assets/fonts/Vampiro_One/VampiroOne-Regular.ttf'),
       // 'Vampiro-One':
       //   'https://fonts.googleapis.com/css2?family=Vampiro+One&display=swap',
     });
