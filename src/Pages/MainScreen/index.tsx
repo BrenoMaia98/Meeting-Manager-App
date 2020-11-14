@@ -1,94 +1,30 @@
 import React from 'react';
-import { Alert, TouchableOpacity, View } from 'react-native';
+import { Alert, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-import { H5 } from '../../GlobalStyles/Typography';
 import { MainScreenProps } from './types';
 import { Container } from './styles';
 import AppHeader from '../../Components/AppHeader';
 import AppFooter from '../../Components/AppFooter';
 import MeetItem from '../../Components/MeetItem';
 import DeleteMeetModal from '../../Components/DeleteMeetModal';
-import { IMeetData, IMeetItem } from '../../Components/MeetItem/types';
 import EditMeetInfoModal from '../../Components/EditMeetModal';
+import { MeetModel } from '../../Models/meetModel';
+import { MeetController } from '../../Controllers/MeetController';
+import { H2 } from '../../GlobalStyles/Typography';
 
 const MainScreen: React.FC<MainScreenProps> = ({ navigation }) => {
   const [isDeleteModalOpen, setDeleteModalOpen] = React.useState<boolean>(
     false
   );
+  const controller = new MeetController();
   const [isEditModalOpen, setEditModalOpen] = React.useState<boolean>(false);
-  const [selectedMeetIndex, setSelectedMeetIndex] = React.useState<index>(-1);
-  const [meets, setMeets] = React.useState<Array<IMeetData>>([
-    {
-      title: 'Um título qualquer',
-      startTime: '18:00',
-      endTime: '19:00',
-      date: '13/11/2020',
-      notification: 'lorem Ipsum',
-      description: '',
-      guests: [
-        {
-          name: 'Breno',
-          id: '1',
-          isAdmin: true,
-          response: null,
-        },
-        {
-          name: 'Cássio',
-          id: '2',
-          isAdmin: false,
-          response: true,
-        },
-      ],
-      meetId: 'lorem Ipsum',
-      placePhoto: '',
-    },
-    {
-      startTime: '18:00',
-      endTime: '19:00',
-      date: '13/11/2020',
-      notification: 'lorem Ipsum',
-      description: '',
-      guests: [
-        {
-          name: 'Breno',
-          id: '1',
-          isAdmin: true,
-          response: null,
-        },
-        {
-          name: 'Cássio',
-          id: '2',
-          isAdmin: false,
-          response: true,
-        },
-      ],
-      meetId: 'lorem Ipsum',
-      placePhoto: '',
-    },
-    {
-      startTime: '18:00',
-      endTime: '19:00',
-      date: '13/11/2020',
-      notification: 'lorem Ipsum',
-      description: '',
-      guests: [
-        {
-          name: 'Breno',
-          id: '1',
-          isAdmin: true,
-          response: null,
-        },
-        {
-          name: 'Cássio',
-          id: '2',
-          isAdmin: false,
-          response: true,
-        },
-      ],
-      meetId: 'lorem Ipsum',
-      placePhoto: '',
-    },
-  ]);
+  const [selectedMeetIndex, setSelectedMeetIndex] = React.useState<number>(-1);
+  const [meets, setMeets] = React.useState<Array<MeetModel>>([]);
+
+  const loadMeets = async () => {
+    const initialMeets = await controller.getMeets();
+    setMeets(initialMeets);
+  };
 
   const switchDeleteMeet = () => {
     setDeleteModalOpen(!isDeleteModalOpen);
@@ -107,7 +43,7 @@ const MainScreen: React.FC<MainScreenProps> = ({ navigation }) => {
     switchEdit();
   };
 
-  const saveEditMeet = (meet: IMeetData) => {
+  const saveEditMeet = (meet: MeetModel) => {
     const meetsCopy = [...meets];
     if (selectedMeetIndex !== -1) {
       meetsCopy[selectedMeetIndex] = { ...meet };
@@ -128,6 +64,10 @@ const MainScreen: React.FC<MainScreenProps> = ({ navigation }) => {
     switchDeleteMeet();
   };
 
+  React.useEffect(() => {
+    loadMeets();
+  }, []);
+
   return (
     <Container>
       <AppHeader
@@ -140,6 +80,12 @@ const MainScreen: React.FC<MainScreenProps> = ({ navigation }) => {
         style={{ position: 'absolute', top: 95, bottom: 85 }}
         data={meets}
         extraData={meets}
+        ListEmptyComponent={
+          // eslint-disable-next-line react/jsx-wrap-multilines
+          <H2 style={{ textAlign: 'center', marginTop: 100 }}>
+            Não existem meets registrados
+          </H2>
+        }
         keyExtractor={(item, index) => `${item.meetId}-${index}`}
         renderItem={({ item: meetData, index }) => {
           return (
@@ -177,7 +123,7 @@ const MainScreen: React.FC<MainScreenProps> = ({ navigation }) => {
           }
           isOpen={isEditModalOpen}
           cancelAction={() => switchEdit()}
-          confirmAction={(meet: IMeetData) => {
+          confirmAction={(meet: MeetModel) => {
             saveEditMeet(meet);
           }}
         />

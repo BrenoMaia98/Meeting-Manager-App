@@ -4,6 +4,7 @@ import { ImageBackground, LoginButton } from './styles';
 import InputWithLabel from '../../Components/InputWithLabel';
 import { LoginProps } from './types';
 import { ColorPalette } from '../../GlobalStyles/ColorPalette';
+import Database from '../../Database';
 
 const Login: React.FC<LoginProps> = ({ navigation }) => {
   const [user, setUser] = React.useState<string>('');
@@ -28,7 +29,12 @@ const Login: React.FC<LoginProps> = ({ navigation }) => {
         onChange={onChangePassword}
         value={password}
       />
-      <LoginButton onPress={() => navigation.navigate('MainScreen')}>
+      <LoginButton
+        onPress={async () => {
+          console.log(await new Database().loadDatabase());
+          // navigation.navigate('MainScreen');
+        }}
+      >
         <H5 color={ColorPalette.white}> Entrar</H5>
       </LoginButton>
       <H5 color={ColorPalette.white} underline>

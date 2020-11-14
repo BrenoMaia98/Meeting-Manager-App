@@ -1,9 +1,9 @@
-import { IMeetData } from '../MeetItem/types';
+import { MeetModel } from '../../Models/meetModel';
 
 export type IEditMeetInfoModal = {
   selectedMeetIndex: number;
-  selectedMeet?: IMeetData;
+  selectedMeet?: MeetModel;
   isOpen: boolean;
-  confirmAction(meet: IMeetData): void;
+  confirmAction(meet: MeetModel): void;
   cancelAction(): void;
 };

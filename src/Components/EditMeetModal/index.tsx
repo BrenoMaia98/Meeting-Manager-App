@@ -4,9 +4,9 @@ import { Image, TouchableOpacity, Modal } from 'react-native';
 import { ColorPalette } from '../../GlobalStyles/ColorPalette';
 import { deviceSpecs } from '../../GlobalStyles/Device';
 import { H4, H5, H6 } from '../../GlobalStyles/Typography';
+import { MeetModel } from '../../Models/meetModel';
 import DeleteMeetModal from '../DeleteMeetModal';
 import InputWithLabel from '../InputWithLabel';
-import { IMeetData } from '../MeetItem/types';
 import PrimaryInputText from '../PrimaryInputyText';
 import {
   SaveButton,
@@ -33,7 +33,7 @@ const EditMeetInfoModal: React.FC<IEditMeetInfoModal> = (props) => {
     false
   );
   const [guestInput, setGuestInput] = React.useState<string>('');
-  const [editingMeetInfo, setEditingMeetInfo] = React.useState<IMeetData>(
+  const [editingMeetInfo, setEditingMeetInfo] = React.useState<MeetModel>(
     selectedMeet || {
       meetId: '',
       title: '',
