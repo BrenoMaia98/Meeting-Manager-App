@@ -1,5 +1,6 @@
 export interface IMeetData {
   meetId: string;
+  title: string;
   startTime: string;
   endTime: string;
   date: string;
@@ -11,6 +12,6 @@ export interface IMeetData {
 
 export interface IMeetItem {
   data: IMeetData;
-  exclusionCallback(id: string): void;
+  DeleteMeetCallback(id: string): void;
   editCallback(id: string): void;
 }

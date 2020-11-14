@@ -1,7 +1,7 @@
-export type IExclusionModal = {
+export type IDeleteMeetModal = {
   title: string;
   description: string;
-  confirmExclusionBtnText: string;
+  confirmDeleteMeetBtnText: string;
   isOpen: boolean;
   confirmAction(): void;
   cancelAction(): void;

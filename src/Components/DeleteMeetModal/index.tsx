@@ -13,13 +13,13 @@ import {
   CancelButton,
   ActionsRow,
 } from './styles';
-import { IExclusionModal } from './types';
+import { IDeleteMeetModal } from './types';
 
-const ExclusionModal: React.FC<IExclusionModal> = (props) => {
+const DeleteMeetModal: React.FC<IDeleteMeetModal> = (props) => {
   const {
     title,
     description,
-    confirmExclusionBtnText,
+    confirmDeleteMeetBtnText,
     isOpen,
     confirmAction,
     cancelAction,
@@ -45,7 +45,7 @@ const ExclusionModal: React.FC<IExclusionModal> = (props) => {
             </CancelButton>
 
             <TouchableOpacity onPress={confirmAction}>
-              <H6 color={ColorPalette.danger}>{confirmExclusionBtnText}</H6>
+              <H6 color={ColorPalette.danger}>{confirmDeleteMeetBtnText}</H6>
             </TouchableOpacity>
           </ActionsRow>
         </ModalBox>
@@ -54,4 +54,4 @@ const ExclusionModal: React.FC<IExclusionModal> = (props) => {
   );
 };
 
-export default ExclusionModal;
+export default DeleteMeetModal;

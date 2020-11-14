@@ -20,7 +20,7 @@ import { IMeetItem } from './types';
 const MeetItem: React.FC<IMeetItem> = ({
   data,
   editCallback,
-  exclusionCallback,
+  DeleteMeetCallback,
 }) => {
   const {
     startTime,
@@ -106,7 +106,7 @@ const MeetItem: React.FC<IMeetItem> = ({
 
           <MeetAction
             onPress={() => {
-              exclusionCallback();
+              DeleteMeetCallback();
             }}
           >
             <H6>Excluir meet</H6>
