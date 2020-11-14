@@ -12,7 +12,7 @@ export class Database {
 
   retrieveData = async (key: string): Promise<string> => {
     try {
-      const value = await AsyncStorage.getItem(key);
+      const value = await AsyncStorage.getItem(`@ContAi:${key}`);
       if (value !== null) {
         return value;
       }
@@ -23,10 +23,10 @@ export class Database {
   };
 
   loadDatabase = async (): Promise<string> => {
-    const data = await this.retrieveData('meets');
+    const data = await this.retrieveData(`@ContAi:meets`);
     if (!data) {
       const fake = JSON.stringify(FakeMeetsDatabase);
-      await this.storeData('meets', fake);
+      await this.storeData('@ContAi:meets', fake);
       return fake;
     }
 
@@ -34,16 +34,16 @@ export class Database {
   };
 
   checkLogin = (): boolean => {
-    this.storeData('loginToken', 'aproved');
+    this.storeData('@ContAi:loginToken', 'aproved');
     return true;
   };
 
   saveMeets = (data: string): void => {
-    this.storeData('meets', data);
+    this.storeData('@ContAi:meets', data);
   };
 
   getMeets = async (): Promise<string> => {
-    const dataRetrieved = await this.retrieveData('meets');
+    const dataRetrieved = await this.retrieveData('@ContAi:meets');
     return dataRetrieved;
   };
 }

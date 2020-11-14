@@ -31,8 +31,8 @@ const Login: React.FC<LoginProps> = ({ navigation }) => {
       />
       <LoginButton
         onPress={async () => {
-          console.log(await new Database().loadDatabase());
-          // navigation.navigate('MainScreen');
+          await new Database().loadDatabase();
+          navigation.navigate('MainScreen');
         }}
       >
         <H5 color={ColorPalette.white}> Entrar</H5>

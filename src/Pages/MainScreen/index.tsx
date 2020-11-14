@@ -16,15 +16,9 @@ const MainScreen: React.FC<MainScreenProps> = ({ navigation }) => {
   const [isDeleteModalOpen, setDeleteModalOpen] = React.useState<boolean>(
     false
   );
-  const controller = new MeetController();
   const [isEditModalOpen, setEditModalOpen] = React.useState<boolean>(false);
   const [selectedMeetIndex, setSelectedMeetIndex] = React.useState<number>(-1);
   const [meets, setMeets] = React.useState<Array<MeetModel>>([]);
-
-  const loadMeets = async () => {
-    const initialMeets = await controller.getMeets();
-    setMeets(initialMeets);
-  };
 
   const switchDeleteMeet = () => {
     setDeleteModalOpen(!isDeleteModalOpen);
@@ -65,8 +59,18 @@ const MainScreen: React.FC<MainScreenProps> = ({ navigation }) => {
   };
 
   React.useEffect(() => {
+    const loadMeets = async () => {
+      const controller = new MeetController();
+      const initialMeets = await controller.getMeets();
+      setMeets(initialMeets);
+    };
     loadMeets();
   }, []);
+
+  React.useEffect(() => {
+    const controller = new MeetController();
+    controller.saveAll(meets);
+  }, [meets]);
 
   return (
     <Container>

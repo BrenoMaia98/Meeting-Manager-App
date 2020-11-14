@@ -12,7 +12,7 @@ export type StackProps = {
 const Stack = createStackNavigator<StackProps>();
 const StackNavigation = (): JSX.Element => {
   return (
-    <Stack.Navigator initialRouteName="MainScreen" headerMode="none">
+    <Stack.Navigator initialRouteName="Login" headerMode="none">
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="MainScreen" component={MainScreen} />
     </Stack.Navigator>

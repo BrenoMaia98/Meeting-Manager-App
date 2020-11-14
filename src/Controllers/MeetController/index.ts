@@ -39,4 +39,8 @@ export class MeetController {
     meets[index] = { ...data };
     this.db.saveMeets(JSON.stringify(meets));
   };
+
+  saveAll = async (data: MeetModel[]) => {
+    this.db.saveMeets(JSON.stringify(data));
+  };
 }
