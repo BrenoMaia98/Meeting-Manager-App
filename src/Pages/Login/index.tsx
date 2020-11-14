@@ -3,6 +3,7 @@ import { H5, LogoText } from '../../GlobalStyles/Typography';
 import { ImageBackground, LoginButton } from './styles';
 import InputWithLabel from '../../Components/InputWithLabel';
 import { LoginProps } from './types';
+import { ColorPalette } from '../../GlobalStyles/ColorPalette';
 
 const Login: React.FC<LoginProps> = ({ navigation }) => {
   const onChangeUser = (text: string) => {
@@ -21,9 +22,9 @@ const Login: React.FC<LoginProps> = ({ navigation }) => {
       <InputWithLabel label="Usuário:" onChange={onChangeUser} />
       <InputWithLabel label="Senha:" onChange={onChangePassword} />
       <LoginButton onPress={() => navigation.navigate('MainScreen')}>
-        <H5 white> Entrar</H5>
+        <H5 color={ColorPalette.white}> Entrar</H5>
       </LoginButton>
-      <H5 white underline>
+      <H5 color={ColorPalette.white} underline>
         Cadastrar conta!
       </H5>
     </ImageBackground>

@@ -8,22 +8,18 @@ import { Container, LogoTextPosition } from './styles';
 import { IAppHeader } from './types';
 
 const AppHeader: React.FC<IAppHeader> = (props) => {
-  const { user } = props;
+  const { user, exitAction } = props;
   return (
     <Container>
       <TouchableOpacity
         onPress={() => {
-          Alert.alert('Tirando do AsyncStorage o @TokenLogin!');
+          exitAction();
         }}
       >
         <Image source={require('../../assets/icons/logoutIcon.png')} />
       </TouchableOpacity>
       <LogoTextPosition small>Meeting</LogoTextPosition>
-      <H6>
-        Usuário:
-        {'\n'}
-        {user}
-      </H6>
+      <H6>{`Usuário: \n ${user}`}</H6>
     </Container>
   );
 };

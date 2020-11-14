@@ -17,31 +17,11 @@ import {
 } from './styles';
 import { IMeetItem } from './types';
 
-const MeetItem: React.FC<IMeetItem> = (props) => {
-  const fakeProps = {
-    startTime: '18:00',
-    endTime: '19:00',
-    date: '13/11/2020',
-    notification: 'lorem Ipsum',
-    description: '',
-    guests: [
-      {
-        name: 'Breno',
-        id: '1',
-        isAdmin: true,
-        response: null,
-      },
-      {
-        name: 'Cássio',
-        id: '2',
-        isAdmin: false,
-        response: true,
-      },
-    ],
-    meetId: 'lorem Ipsum',
-    placePhoto: '',
-  };
-
+const MeetItem: React.FC<IMeetItem> = ({
+  data,
+  editCallback,
+  exclusionCallback,
+}) => {
   const {
     startTime,
     endTime,
@@ -51,7 +31,7 @@ const MeetItem: React.FC<IMeetItem> = (props) => {
     guests,
     meetId,
     placePhoto,
-  } = props;
+  } = data;
 
   type guestsData = {
     total: number;
@@ -73,7 +53,7 @@ const MeetItem: React.FC<IMeetItem> = (props) => {
       refused: guests.filter((item) => item.response === false).length,
       pending: guests.filter((item) => item.response === null).length,
     });
-  }, []);
+  }, [guests]);
 
   return (
     <Container>
@@ -115,12 +95,20 @@ const MeetItem: React.FC<IMeetItem> = (props) => {
         <Image source={require('../../assets/images/placeholder.png')} />
 
         <RowSpaceBetween>
-          <MeetAction>
+          <MeetAction
+            onPress={() => {
+              editCallback();
+            }}
+          >
             <Image source={require('../../assets/icons/editPencil.png')} />
             <H6>Editar meet</H6>
           </MeetAction>
 
-          <MeetAction>
+          <MeetAction
+            onPress={() => {
+              exclusionCallback();
+            }}
+          >
             <H6>Excluir meet</H6>
             <Image source={require('../../assets/icons/trash.png')} />
           </MeetAction>

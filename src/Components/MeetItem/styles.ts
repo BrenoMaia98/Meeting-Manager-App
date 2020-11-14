@@ -28,7 +28,10 @@ export const DataSection = styled.View`
   padding-left: 16px;
   padding-right: 16px;
 `;
-export const GuestsResponseBox = styled(DataSection)``;
+export const GuestsResponseBox = styled(DataSection)`
+  flex-direction: row;
+  justify-content: space-between;
+`;
 
 export const RowData = styled(H6)`
   padding-left: 16px;
