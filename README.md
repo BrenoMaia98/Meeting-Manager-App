@@ -63,6 +63,24 @@ Para ter uma visão de como seria dentro de um aparelho móvel, será necessári
   
 ---
 
+## Melhorias
+
+- Cadastro de usuários e Perfil de usuário (edição e visualização).
+- Validação estática do login de usuários.
+- Filtro para reuniões.
+- Middleware entre a ContextAPI e a Database para Histórico + Logs.
+- Exclusão de Meet somente pelo usuário que criou ou administrador do sistema.
+- Implementação da câmera e picker de img para adição do previes do local da reunião.
+- Ordenação por data dos meets.
+- (edição de meet ) Implementar a notificação de reunião.
+- (edição de meet ) TextArea para a descrição ao invés de input simples .
+- (edição de meet) Utilização de DatePicker ao invés de input simples.
+- (edição de meet ) Verificação de preenchimento de campos obrigatórios.
+- (edição de meet ) Listagem de usuários existentes no sistema para adicionar como convidados.
+- Modularização das estilizações. Ex: reduzir todas as Row's em um arquivo de estilização global. Criar um componente estilo GlobalView, que aceita personalização quase que inline.
+
+---
+
 Feito com ♥ por Breno Maia :wave: [Entre em contato!](https://www.linkedin.com/in/breno-sm-cruz/)
 
 [yarn]: https://yarnpkg.com/
