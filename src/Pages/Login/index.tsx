@@ -6,11 +6,14 @@ import { LoginProps } from './types';
 import { ColorPalette } from '../../GlobalStyles/ColorPalette';
 
 const Login: React.FC<LoginProps> = ({ navigation }) => {
+  const [user, setUser] = React.useState<string>('');
+  const [password, setPassword] = React.useState<string>('');
+
   const onChangeUser = (text: string) => {
-    console.log(text);
+    setUser(text);
   };
   const onChangePassword = (text: string) => {
-    console.log(text);
+    setPassword(text);
   };
 
   return (
@@ -19,8 +22,12 @@ const Login: React.FC<LoginProps> = ({ navigation }) => {
       resizeMode="cover"
     >
       <LogoText>Meeting</LogoText>
-      <InputWithLabel label="Usuário:" onChange={onChangeUser} />
-      <InputWithLabel label="Senha:" onChange={onChangePassword} />
+      <InputWithLabel label="Usuário:" onChange={onChangeUser} value={user} />
+      <InputWithLabel
+        label="Senha:"
+        onChange={onChangePassword}
+        value={password}
+      />
       <LoginButton onPress={() => navigation.navigate('MainScreen')}>
         <H5 color={ColorPalette.white}> Entrar</H5>
       </LoginButton>

@@ -23,6 +23,7 @@ const MeetItem: React.FC<IMeetItem> = ({
   DeleteMeetCallback,
 }) => {
   const {
+    title,
     startTime,
     endTime,
     date,
@@ -58,20 +59,20 @@ const MeetItem: React.FC<IMeetItem> = ({
   return (
     <Container>
       <MeetTitleBox>
-        <MeetTitle>Reunião de alinhamento - novos funcionários CRM</MeetTitle>
+        <MeetTitle>{title || 'Sem título'}</MeetTitle>
       </MeetTitleBox>
 
       <DataSection>
         <RowSpaceBetween>
           <View style={{ flexDirection: 'row' }}>
             <Image source={require('../../assets/icons/clock.png')} />
-            <H5>{`${startTime} ~ ${endTime}`}</H5>
+            <H5>{`${startTime || 'A definir'} ~ ${endTime || 'A definir'}`}</H5>
           </View>
-          <H5>{date}</H5>
+          <H5>{date || 'A definir'}</H5>
         </RowSpaceBetween>
         <RowBox>
           <Image source={require('../../assets/icons/notification.png')} />
-          <RowData>{notification}</RowData>
+          <RowData>{notification || 'Não foi definido lembrete'}</RowData>
         </RowBox>
       </DataSection>
 
@@ -97,7 +98,7 @@ const MeetItem: React.FC<IMeetItem> = ({
         <RowSpaceBetween>
           <MeetAction
             onPress={() => {
-              editCallback();
+              editCallback(meetId);
             }}
           >
             <Image source={require('../../assets/icons/editPencil.png')} />
@@ -106,7 +107,7 @@ const MeetItem: React.FC<IMeetItem> = ({
 
           <MeetAction
             onPress={() => {
-              DeleteMeetCallback();
+              DeleteMeetCallback(meetId);
             }}
           >
             <H6>Excluir meet</H6>

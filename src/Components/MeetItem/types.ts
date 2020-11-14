@@ -1,3 +1,9 @@
+export type IGuest = {
+  name: string;
+  id: string;
+  isAdmin: boolean;
+  response: boolean | null;
+};
 export interface IMeetData {
   meetId: string;
   title: string;
@@ -6,7 +12,7 @@ export interface IMeetData {
   date: string;
   notification: string;
   description: string;
-  guests: Array<any>;
+  guests: Array<IGuest>;
   placePhoto: string;
 }
 

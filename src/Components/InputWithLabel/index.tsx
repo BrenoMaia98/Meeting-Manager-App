@@ -6,14 +6,16 @@ import { InputBox } from './styles';
 import { IInputWithLabel } from './types';
 
 const InputWithLabel: React.FC<IInputWithLabel> = (props) => {
-  const { label, customWidth } = props;
+  const { label, ...input } = props;
   return (
     <View>
       <H5>{label}</H5>
       <InputBox>
         <PrimaryInputText
-          width={customWidth}
-          onChange={(text) => console.log(text)}
+          width={input.customWidth}
+          placeholder={input.placeholder}
+          value={input.value}
+          onChange={input.onChange}
         />
       </InputBox>
     </View>
