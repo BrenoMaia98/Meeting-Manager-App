@@ -1,0 +1,111 @@
+import { MeetModel } from '../Models/meetModel';
+
+export const FakeMeetsDatabase: MeetModel[] = [
+  {
+    title: '',
+    startTime: '18:00',
+    endTime: '19:00',
+    date: '13/12/2020',
+    notification: '',
+    description: '',
+    guests: [
+      {
+        id: '0',
+        name: 'Breno Strogueia Maia da Cruz',
+        email: 'brenomaia98@gmail.com',
+        isAdmin: true,
+        response: null,
+      },
+      {
+        id: '1',
+        name: 'Outro User Exemplo',
+        email: 'userExemplo01@gmail.com',
+        isAdmin: false,
+        response: null,
+      },
+      {
+        id: '2',
+        name: 'Outro User Exemplo',
+        email: 'userExemplo02@gmail.com',
+        isAdmin: false,
+        response: true,
+      },
+      {
+        id: '3',
+        name: 'Outro User Exemplo',
+        email: 'userExemplo03@gmail.com',
+        isAdmin: false,
+        response: true,
+      },
+    ],
+    meetId: '01',
+    placePhoto: '',
+  },
+  {
+    title: 'Título de uma reunião diferente',
+    startTime: '21:00',
+    endTime: '22:00',
+    date: '14/12/2020',
+    notification: '',
+    description: '',
+    guests: [
+      {
+        id: '0',
+        name: 'Breno Strogueia Maia da Cruz',
+        email: 'brenomaia98@gmail.com',
+        isAdmin: true,
+        response: null,
+      },
+      {
+        id: '1',
+        name: 'Outro User Exemplo',
+        email: 'userExemplo01@gmail.com',
+        isAdmin: false,
+        response: null,
+      },
+      {
+        id: '2',
+        name: 'Outro User Exemplo',
+        email: 'userExemplo02@gmail.com',
+        isAdmin: false,
+        response: null,
+      },
+      {
+        id: '3',
+        name: 'Outro User Exemplo',
+        email: 'userExemplo03@gmail.com',
+        isAdmin: false,
+        response: false,
+      },
+    ],
+    meetId: '02',
+    placePhoto: '',
+  },
+
+  {
+    title: 'Bate papo sobre assunto aleatório',
+    startTime: '00:00',
+    endTime: '2:00',
+    date: '01/12/2020',
+    notification: '',
+    description: '',
+    guests: [
+      {
+        id: '0',
+        name: 'Breno Strogueia Maia da Cruz',
+        email: 'brenomaia98@gmail.com',
+        isAdmin: true,
+        response: null,
+      },
+      {
+        id: '3',
+        name: 'Outro User Exemplo',
+        email: 'userExemplo03@gmail.com',
+        isAdmin: false,
+        response: false,
+      },
+    ],
+    meetId: '03',
+    placePhoto: '',
+  },
+];
