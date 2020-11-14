@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { Alert, TouchableOpacity, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { H5 } from '../../GlobalStyles/Typography';
 import { MainScreenProps } from './types';
@@ -115,6 +115,7 @@ const MainScreen: React.FC<MainScreenProps> = ({ navigation }) => {
       meetsCopy.push(meet);
     }
     setMeets(meetsCopy);
+    console.log('EDITED : ', JSON.stringify(meetsCopy, null, 2));
     setSelectedMeetIndex(-1);
     switchEdit();
   };
@@ -154,28 +155,47 @@ const MainScreen: React.FC<MainScreenProps> = ({ navigation }) => {
           );
         }}
       />
-      <DeleteMeetModal
-        title="Você tem certeza que deseja descartar as alterações? "
-        description="Ao descarta-las, nenhuma edição será salva."
-        confirmDeleteMeetBtnText="Excluir meet"
-        isOpen={isDeleteModalOpen}
-        cancelAction={() => switchDeleteMeet()}
-        confirmAction={() => {
-          deleteSelectedMeet();
+
+      {isDeleteModalOpen && (
+        <DeleteMeetModal
+          title="Você tem certeza que deseja excluir o meet?  "
+          description="Ao excluir, o meet será desfeito e todos os convidados serão notificados da exclusão."
+          confirmDeleteMeetBtnText="Excluir meet"
+          isOpen={isDeleteModalOpen}
+          cancelAction={() => switchDeleteMeet()}
+          confirmAction={() => {
+            deleteSelectedMeet();
+          }}
+        />
+      )}
+
+      {isEditModalOpen && (
+        <EditMeetInfoModal
+          selectedMeetIndex={selectedMeetIndex}
+          selectedMeet={
+            selectedMeetIndex !== -1 ? meets[selectedMeetIndex] : undefined
+          }
+          isOpen={isEditModalOpen}
+          cancelAction={() => switchEdit()}
+          confirmAction={(meet: IMeetData) => {
+            saveEditMeet(meet);
+          }}
+        />
+      )}
+
+      <AppFooter
+        profile={() => {
+          Alert.alert('Work in progress!');
+        }}
+        add={() => {
+          setSelectedMeetIndex(-1);
+          console.log(selectedMeetIndex);
+          switchEdit();
+        }}
+        filter={() => {
+          Alert.alert('Work in progress!');
         }}
       />
-      <EditMeetInfoModal
-        selectedMeetIndex={selectedMeetIndex}
-        selectedMeet={
-          selectedMeetIndex !== -1 ? meets[selectedMeetIndex] : undefined
-        }
-        isOpen={isEditModalOpen}
-        cancelAction={() => switchEdit()}
-        confirmAction={(meet: IMeetData) => {
-          saveEditMeet(meet);
-        }}
-      />
-      <AppFooter />
     </Container>
   );
 };

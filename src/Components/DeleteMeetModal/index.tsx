@@ -24,6 +24,7 @@ const DeleteMeetModal: React.FC<IDeleteMeetModal> = (props) => {
     confirmAction,
     cancelAction,
   } = props;
+
   return (
     <Modal
       transparent
